@@ -2,18 +2,22 @@ import React, { useState } from 'react';
 import { InputGroup, FormControl } from 'react-bootstrap';
 import './filter.css';
 
-function Filter({ filter, setFilter }) {
+function Filter({ value, setFilter }) {
+  const [filterValue, setFilterValue] = useState(value); 
+
   const filterChange = (event) => {
-    setFilter(event.target.value);
-  };
+    const newValue = event.target.value;
+    setFilterValue(newValue);
+    setFilter(newValue);
+  }
 
   return (
     <InputGroup className="filter-input">
       <FormControl
         type="text"
         name="filter"
-        placeholder="Search by name"
-        value={filter}
+        placeholder="Пошук за ім'ям"
+        value={filterValue}
         onChange={filterChange}
       />
     </InputGroup>

@@ -18,19 +18,29 @@
   display: flex;
 }
 
-.contact-form-input input {
-  border: none;
+input:focus {
+  outline: none;
+}
+
+.contact-form-input:hover {
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.contact-form-input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
 }
 
 .contact-form-button {
-  padding: 5px 10px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
+  border-radius: 10px;
+  color: white;
+  transition: .2s linear;
+  background: #0B63F6;
+  padding: 15px;
   cursor: pointer;
-  border-radius: 8px;
 }
 
 .contact-form-button:hover {
-  background-color: #0056b3;
+  box-shadow: 0 0 0 2px white, 0 0 0 4px #3C82F8;
 }

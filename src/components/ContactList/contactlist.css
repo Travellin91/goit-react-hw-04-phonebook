@@ -34,6 +34,7 @@
 
 .contact-delete-button:hover i {
   color: #ff0000;
+  transition: .2s linear;
 }
 
 .contact-number {

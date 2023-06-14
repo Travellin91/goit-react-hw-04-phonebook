@@ -6,10 +6,21 @@
   border-radius: 5px;
   border: 2px solid #ccc;
   padding: 5px;
+  border-radius: 8px;
 }
+
+
+.filter-input .form-control:hover {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+  
+}
+
 
 .filter-input .form-control:focus {
   outline: none;
   border-color: #007bff;
   box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+  
 }

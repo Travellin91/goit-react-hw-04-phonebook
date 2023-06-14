@@ -1,12 +1,12 @@
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './app.css';
 import { Container, Row, Col } from 'react-bootstrap';
 import ContactForms from './ContactForms/ContactForms';
 import ContactList from './ContactList/ContactList';
 import Filter from './Filter/Filter';
-import { useEffect } from 'react';
 import { useMemo } from 'react';
+import { nanoid } from 'nanoid';
+import Notiflix from 'notiflix';
 
 const App = () => {
   const [contacts, setContacts] = useState([
@@ -29,7 +29,32 @@ const App = () => {
   }, [contacts]);
 
   const addContact = newContact => {
-    setContacts(prevState => [...prevState, newContact]);
+    const { name, number } = newContact;
+
+    if (name.trim() === '' || number.trim() === '') {
+      return;
+    }
+
+    const existingContact = contacts.find(
+      contact => contact.name.toLowerCase() === name.toLowerCase()
+    );
+
+    if (existingContact) {
+      Notiflix.Report.warning(
+        'Alert',
+        `Contact with name "${name}" already exists!`,
+        'Ok'
+      );
+      return;
+    }
+
+    const updatedContact = {
+      id: nanoid(),
+      name: name.trim(),
+      number: number.trim(),
+    };
+
+    setContacts(prevContacts => [...prevContacts, updatedContact]);
   };
 
   const deleteContact = id => {
@@ -52,7 +77,7 @@ const App = () => {
 
       <Row>
         <Col md={6}>
-          <ContactForms addContact={addContact} contacts={contacts} />
+          <ContactForms addContact={addContact} />
         </Col>
         <Col md={6}>
           <div className="contacts-section">
@@ -67,6 +92,9 @@ const App = () => {
 };
 
 export default App;
+
+
+
 
 // class App extends Component {
 //   state = {
